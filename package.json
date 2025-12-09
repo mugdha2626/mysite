@@ -1,6 +1,9 @@
 {
   "name": "v4",
   "description": "Personal Website V4",
+  "resolutions": {
+    "graphql": "^15.4.0"
+  },
   "version": "1.0.0",
   "author": "Brittany Chiang <brittany.chiang@gmail.com>",
   "repository": {
@@ -33,7 +36,7 @@
   "dependencies": {
     "animejs": "^3.1.0",
     "babel-plugin-styled-components": "^1.12.0",
-    "gatsby": "^3.4.1",
+    "gatsby": "^3.14.0",
     "gatsby-plugin-google-analytics": "^3.4.0",
     "gatsby-plugin-image": "^1.4.0",
     "gatsby-plugin-manifest": "^3.4.0",
