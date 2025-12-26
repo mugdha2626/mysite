@@ -21,8 +21,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::selection {
-    background-color: var(--lightest-navy);
-    color: var(--lightest-slate);
+    background-color: var(--green-tint);
+    color: var(--green);
   }
 
   /* Provide basic, default focus styles.*/
@@ -53,17 +53,17 @@ const GlobalStyle = createGlobalStyle`
   /* Scrollbar Styles */
   html {
     scrollbar-width: thin;
-    scrollbar-color: var(--dark-slate) var(--navy);
+    scrollbar-color: var(--rose) var(--cream);
   }
   ::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--navy);
+    background: var(--cream);
   }
   ::-webkit-scrollbar-thumb {
-    background-color: var(--dark-slate);
-    border: 3px solid var(--navy);
+    background-color: var(--rose);
+    border: 3px solid var(--cream);
     border-radius: 10px;
   }
 
@@ -74,14 +74,14 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--navy);
+    background-color: var(--cream);
     color: var(--slate);
     font-family: var(--font-sans);
-    font-size: var(--fz-xl);
-    line-height: 1.3;
+    font-size: var(--fz-lg);
+    line-height: 1.5;
 
     @media (max-width: 480px) {
-      font-size: var(--fz-lg);
+      font-size: var(--fz-md);
     }
 
     &.hidden {
@@ -114,7 +114,7 @@ const GlobalStyle = createGlobalStyle`
   main {
     margin: 0 auto;
     width: 100%;
-    max-width: 1600px;
+    max-width: 1400px;
     min-height: 100vh;
     padding: 200px 150px;
 
@@ -145,15 +145,15 @@ const GlobalStyle = createGlobalStyle`
 
   section {
     margin: 0 auto;
-    padding: 100px 0;
-    max-width: 1000px;
+    padding: 80px 0;
+    max-width: 1200px;
 
     @media (max-width: 768px) {
-      padding: 80px 0;
+      padding: 60px 0;
     }
 
     @media (max-width: 480px) {
-      padding: 60px 0;
+      padding: 40px 0;
     }
   }
 
@@ -164,19 +164,23 @@ const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     margin: 0 0 10px 0;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--lightest-slate);
     line-height: 1.1;
   }
 
   .big-heading {
     margin: 0;
+    font-family: var(--font-serif);
     font-size: clamp(40px, 8vw, 80px);
+    font-weight: 400;
   }
 
   .medium-heading {
     margin: 0;
+    font-family: var(--font-serif);
     font-size: clamp(40px, 8vw, 60px);
+    font-weight: 400;
   }
 
   .numbered-heading {
@@ -185,38 +189,21 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
     margin: 10px 0 40px;
     width: 100%;
+    font-family: var(--font-serif);
     font-size: clamp(26px, 5vw, var(--fz-heading));
     white-space: nowrap;
-
-    &:before {
-      position: relative;
-      bottom: 4px;
-      counter-increment: section;
-      content: '0' counter(section) '.';
-      margin-right: 10px;
-      color: var(--green);
-      font-family: var(--font-mono);
-      font-size: clamp(var(--fz-md), 3vw, var(--fz-xl));
-      font-weight: 400;
-
-      @media (max-width: 480px) {
-        margin-bottom: -3px;
-        margin-right: 5px;
-      }
-    }
 
     &:after {
       content: '';
       display: block;
       position: relative;
-      top: -5px;
-      width: 300px;
+      width: 200px;
       height: 1px;
       margin-left: 20px;
-      background-color: var(--lightest-navy);
+      background: linear-gradient(to right, var(--lightest-navy), transparent);
 
       @media (max-width: 1080px) {
-        width: 200px;
+        width: 150px;
       }
       @media (max-width: 768px) {
         width: 100%;
@@ -276,7 +263,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   input, textarea {
-    border-radius: 0;
+    border-radius: var(--border-radius);
     outline: 0;
 
     &:focus {
@@ -304,9 +291,9 @@ const GlobalStyle = createGlobalStyle`
 
     & > code {
       background-color: var(--light-navy);
-      color: var(--white);
+      color: var(--green);
       font-size: var(--fz-sm);
-      border-radius: var(--border-radius);
+      border-radius: var(--border-radius-sm);
       padding: 0.3em 0.5em;
     }
   }
@@ -322,7 +309,7 @@ const GlobalStyle = createGlobalStyle`
         padding-left: 30px;
         margin-bottom: 10px;
         &:before {
-          content: '▹';
+          content: '\\2022';
           position: absolute;
           left: 0;
           color: var(--green);
@@ -332,21 +319,21 @@ const GlobalStyle = createGlobalStyle`
   }
 
   blockquote {
-    border-left-color: var(--green);
-    border-left-style: solid;
-    border-left-width: 1px;
+    border-left: 3px solid var(--green);
     margin-left: 0px;
     margin-right: 0px;
     padding-left: 1.5rem;
 
     p {
+      font-family: var(--font-serif);
       font-style: italic;
-      font-size: 24px;
+      font-size: 20px;
+      color: var(--slate);
     }
   }
 
   hr {
-    background-color: var(--lightest-navy);
+    background: linear-gradient(to right, var(--lightest-navy), transparent);
     height: 1px;
     border-width: 0px;
     border-style: initial;
@@ -373,7 +360,7 @@ const GlobalStyle = createGlobalStyle`
     &:hover,
     &:focus {
       background-color: var(--green);
-      color: var(--navy);
+      color: var(--cream);
       top: 0;
       left: 0;
       width: auto;
@@ -391,16 +378,18 @@ const GlobalStyle = createGlobalStyle`
 
   .overline {
     color: var(--green);
-    font-family: var(--font-mono);
-    font-size: var(--fz-md);
-    font-weight: 400;
+    font-family: var(--font-sans);
+    font-size: var(--fz-sm);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
   .subtitle {
     color: var(--green);
     margin: 0 0 20px 0;
     font-size: var(--fz-md);
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     font-weight: 400;
     line-height: 1.5;
     @media (max-width: 1080px) {
@@ -430,7 +419,7 @@ const GlobalStyle = createGlobalStyle`
 
     a {
       ${({ theme }) => theme.mixins.inlineLink};
-      font-family: var(--font-mono);
+      font-family: var(--font-sans);
       font-size: var(--fz-sm);
       font-weight: 600;
       line-height: 1.5;

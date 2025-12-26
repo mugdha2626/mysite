@@ -7,7 +7,6 @@ import { navLinks } from '@config';
 import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu } from '@components';
-import { IconLogo, IconHex } from '@components/icons';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -17,7 +16,7 @@ const StyledHeader = styled.header`
   padding: 0px 50px;
   width: 100%;
   height: var(--nav-height);
-  background-color: rgba(248, 249, 250, 0.95);
+  background-color: rgba(249, 248, 246, 0.95);
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
@@ -38,7 +37,7 @@ const StyledHeader = styled.header`
       css`
         height: var(--nav-scroll-height);
         transform: translateY(0px);
-        background-color: rgba(248, 249, 250, 0.95);
+        background-color: rgba(249, 248, 246, 0.98);
         box-shadow: 0 10px 30px -10px var(--navy-shadow);
       `};
 
@@ -58,7 +57,7 @@ const StyledNav = styled.nav`
   position: relative;
   width: 100%;
   color: var(--lightest-slate);
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
   counter-reset: item 0;
   z-index: 12;
 
@@ -66,44 +65,16 @@ const StyledNav = styled.nav`
     ${({ theme }) => theme.mixins.flexCenter};
 
     a {
-      color: var(--green);
-      width: 42px;
-      height: 42px;
-      position: relative;
-      z-index: 1;
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--lightest-slate);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      transition: var(--transition);
 
-      .hex-container {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        @media (prefers-reduced-motion: no-preference) {
-          transition: var(--transition);
-        }
-      }
-
-      .logo-container {
-        position: relative;
-        z-index: 1;
-        svg {
-          fill: none;
-          user-select: none;
-          @media (prefers-reduced-motion: no-preference) {
-            transition: var(--transition);
-          }
-          polygon {
-            fill: var(--navy);
-          }
-        }
-      }
-
-      &:hover,
-      &:focus {
-        outline: 0;
-        transform: translate(-4px, -4px);
-        .hex-container {
-          transform: translate(4px, 3px);
-        }
+      &:hover {
+        color: var(--green);
       }
     }
   }
@@ -112,6 +83,7 @@ const StyledNav = styled.nav`
 const StyledLinks = styled.div`
   display: flex;
   align-items: center;
+  gap: 10px;
 
   @media (max-width: 768px) {
     display: none;
@@ -122,31 +94,44 @@ const StyledLinks = styled.div`
     padding: 0;
     margin: 0;
     list-style: none;
+    gap: 5px;
 
     li {
-      margin: 0 5px;
       position: relative;
-      counter-increment: item 1;
-      font-size: var(--fz-xs);
+      font-size: var(--fz-sm);
 
       a {
-        padding: 10px;
+        padding: 12px 18px;
+        color: var(--slate);
+        font-weight: 500;
+        border-radius: var(--border-radius-xl);
+        transition: var(--transition);
 
-        &:before {
-          content: '0' counter(item) '.';
-          margin-right: 5px;
+        &:hover {
           color: var(--green);
-          font-size: var(--fz-xxs);
-          text-align: right;
+          background-color: var(--green-tint);
         }
       }
     }
   }
 
   .resume-button {
-    ${({ theme }) => theme.mixins.smallButton};
-    margin-left: 15px;
-    font-size: var(--fz-xs);
+    margin-left: 10px;
+    padding: 12px 24px;
+    background-color: var(--green);
+    color: var(--cream-light);
+    font-family: var(--font-sans);
+    font-size: var(--fz-sm);
+    font-weight: 500;
+    border-radius: var(--border-radius-xl);
+    text-decoration: none;
+    transition: var(--transition);
+
+    &:hover {
+      background-color: var(--green-light);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -10px rgba(45, 90, 74, 0.3);
+    }
   }
 `;
 
@@ -185,21 +170,11 @@ const Nav = ({ isHome }) => {
     <div className="logo" tabIndex="-1">
       {isHome ? (
         <a href="/" aria-label="home">
-          <div className="hex-container">
-            <IconHex />
-          </div>
-          <div className="logo-container">
-            <IconLogo />
-          </div>
+          MP
         </a>
       ) : (
         <Link to="/" aria-label="home">
-          <div className="hex-container">
-            <IconHex />
-          </div>
-          <div className="logo-container">
-            <IconLogo />
-          </div>
+          MP
         </Link>
       )}
     </div>

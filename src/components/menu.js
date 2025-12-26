@@ -98,7 +98,7 @@ const StyledSidebar = styled.aside`
     width: min(75vw, 400px);
     height: 100vh;
     outline: 0;
-    background-color: var(--light-navy);
+    background-color: var(--cream-light);
     box-shadow: -10px 0px 30px -15px var(--navy-shadow);
     z-index: 9;
     transform: translateX(${props => (props.menuOpen ? 0 : 100)}vw);
@@ -111,7 +111,7 @@ const StyledSidebar = styled.aside`
     width: 100%;
     flex-direction: column;
     color: var(--lightest-slate);
-    font-family: var(--font-mono);
+    font-family: var(--font-sans);
     text-align: center;
   }
 
@@ -123,35 +123,45 @@ const StyledSidebar = styled.aside`
 
     li {
       position: relative;
-      margin: 0 auto 20px;
-      counter-increment: item 1;
-      font-size: clamp(var(--fz-sm), 4vw, var(--fz-lg));
+      margin: 0 auto 10px;
+      font-size: clamp(var(--fz-md), 4vw, var(--fz-xl));
 
       @media (max-width: 600px) {
-        margin: 0 auto 10px;
-      }
-
-      &:before {
-        content: '0' counter(item) '.';
-        display: block;
-        margin-bottom: 5px;
-        color: var(--green);
-        font-size: var(--fz-sm);
+        margin: 0 auto 5px;
       }
     }
 
     a {
       ${({ theme }) => theme.mixins.link};
       width: 100%;
-      padding: 3px 20px 20px;
+      padding: 15px 20px;
+      font-weight: 500;
+      border-radius: var(--border-radius-lg);
+      transition: var(--transition);
+
+      &:hover {
+        background-color: var(--green-tint);
+        color: var(--green);
+      }
     }
   }
 
   .resume-link {
-    ${({ theme }) => theme.mixins.bigButton};
-    padding: 18px 50px;
-    margin: 10% auto 0;
-    width: max-content;
+    display: inline-block;
+    margin-top: 30px;
+    padding: 16px 40px;
+    background-color: var(--green);
+    color: var(--cream-light);
+    font-family: var(--font-sans);
+    font-size: var(--fz-md);
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: var(--border-radius-xl);
+    transition: var(--transition);
+
+    &:hover {
+      background-color: var(--green-light);
+    }
   }
 `;
 

@@ -1,5 +1,5 @@
 ---
-date: '2025-01-02'
+date: '2025-12-15'
 title: 'ML Research Assistant'
 company: 'VRAI Lab'
 location: 'Purdue University'

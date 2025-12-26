@@ -8,9 +8,10 @@ const StyledFooter = styled.footer`
   ${({ theme }) => theme.mixins.flexCenter};
   flex-direction: column;
   height: auto;
-  min-height: 70px;
-  padding: 15px;
+  min-height: 100px;
+  padding: 30px 50px;
   text-align: center;
+  background: linear-gradient(to bottom, var(--cream), var(--cream-dark));
 `;
 
 const StyledSocialLinks = styled.div`
@@ -19,9 +20,9 @@ const StyledSocialLinks = styled.div`
   @media (max-width: 768px) {
     display: block;
     width: 100%;
-    max-width: 270px;
-    margin: 0 auto 10px;
-    color: var(--light-slate);
+    max-width: 300px;
+    margin: 0 auto 20px;
+    color: var(--slate);
   }
 
   ul {
@@ -31,7 +32,15 @@ const StyledSocialLinks = styled.div`
     list-style: none;
 
     a {
-      padding: 10px;
+      padding: 12px;
+      border-radius: 50%;
+      transition: var(--transition);
+
+      &:hover {
+        background-color: var(--green-tint);
+        color: var(--green);
+      }
+
       svg {
         width: 20px;
         height: 20px;
@@ -41,26 +50,49 @@ const StyledSocialLinks = styled.div`
 `;
 
 const StyledCredit = styled.div`
-  color: var(--light-slate);
-  font-family: var(--font-mono);
-  font-size: var(--fz-xxs);
-  line-height: 1;
+  color: var(--slate);
+  font-family: var(--font-sans);
+  font-size: var(--fz-sm);
+  line-height: 1.5;
 
   a {
-    padding: 10px;
+    color: var(--green);
+    padding: 0 5px;
+    transition: var(--transition);
+
+    &:hover {
+      color: var(--green-light);
+    }
+  }
+
+  .credit-text {
+    margin-bottom: 10px;
   }
 
   .github-stats {
-    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
+    font-size: var(--fz-xs);
 
-    & > span {
+    span {
       display: inline-flex;
       align-items: center;
-      margin: 0 7px;
+      gap: 5px;
+      color: var(--slate);
+      background: var(--light-navy);
+      padding: 6px 12px;
+      border-radius: var(--border-radius-xl);
+      transition: var(--transition);
+
+      &:hover {
+        background: var(--green-tint);
+        color: var(--green);
+      }
     }
+
     svg {
-      display: inline-block;
-      margin-right: 5px;
       width: 14px;
       height: 14px;
     }
@@ -104,26 +136,23 @@ const Footer = () => {
         </ul>
       </StyledSocialLinks>
 
-      <StyledCredit tabindex="-1">
-        <a href="https://github.com/mugdha2626/mysite">
-          <div>
-            Built by Mugdha Patil | Design by{' '}
-            <a href="https://brittanychiang.com">Brittany Chiang</a>
-          </div>
+      <StyledCredit tabIndex="-1">
+        <div className="credit-text">
+          Built by <a href="https://github.com/mugdha2626/mysite">Mugdha Patil</a>
+        </div>
 
-          {githubInfo.stars && githubInfo.forks && (
-            <div className="github-stats">
-              <span>
-                <Icon name="Star" />
-                <span>{githubInfo.stars.toLocaleString()}</span>
-              </span>
-              <span>
-                <Icon name="Fork" />
-                <span>{githubInfo.forks.toLocaleString()}</span>
-              </span>
-            </div>
-          )}
-        </a>
+        {githubInfo.stars !== null && githubInfo.forks !== null && (
+          <div className="github-stats">
+            <span>
+              <Icon name="Star" />
+              {githubInfo.stars.toLocaleString()}
+            </span>
+            <span>
+              <Icon name="Fork" />
+              {githubInfo.forks.toLocaleString()}
+            </span>
+          </div>
+        )}
       </StyledCredit>
     </StyledFooter>
   );

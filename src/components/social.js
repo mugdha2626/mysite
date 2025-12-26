@@ -19,7 +19,7 @@ const StyledSocialList = styled.ul`
     width: 1px;
     height: 90px;
     margin: 0 auto;
-    background-color: var(--light-slate);
+    background: linear-gradient(to bottom, var(--rose), transparent);
   }
 
   li {
@@ -29,10 +29,13 @@ const StyledSocialList = styled.ul`
 
     a {
       padding: 10px;
+      color: var(--slate);
+      transition: var(--transition);
 
       &:hover,
       &:focus {
         transform: translateY(-3px);
+        color: var(--green);
       }
 
       svg {

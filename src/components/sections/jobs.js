@@ -1,166 +1,197 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { CSSTransition } from 'react-transition-group';
 import styled from 'styled-components';
 import { srConfig } from '@config';
-import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledJobsSection = styled.section`
-  max-width: 700px;
-
-  .inner {
-    display: flex;
-
-    @media (max-width: 600px) {
-      display: block;
-    }
-
-    // Prevent container from jumping
-    @media (min-width: 700px) {
-      min-height: 340px;
-    }
-  }
+  max-width: 900px;
+  padding: 100px 0;
 `;
 
-const StyledTabList = styled.div`
-  position: relative;
-  z-index: 3;
-  width: max-content;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-
-  @media (max-width: 600px) {
-    display: flex;
-    overflow-x: auto;
-    width: calc(100% + 100px);
-    padding-left: 50px;
-    margin-left: -50px;
-    margin-bottom: 30px;
-  }
-  @media (max-width: 480px) {
-    width: calc(100% + 50px);
-    padding-left: 25px;
-    margin-left: -25px;
-  }
-
-  li {
-    &:first-of-type {
-      @media (max-width: 600px) {
-        margin-left: 50px;
-      }
-      @media (max-width: 480px) {
-        margin-left: 25px;
-      }
-    }
-    &:last-of-type {
-      @media (max-width: 600px) {
-        padding-right: 50px;
-      }
-      @media (max-width: 480px) {
-        padding-right: 25px;
-      }
-    }
-  }
-`;
-
-const StyledTabButton = styled.button`
-  ${({ theme }) => theme.mixins.link};
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: var(--tab-height);
-  padding: 0 20px 2px;
-  border-left: 2px solid var(--lightest-navy);
-  background-color: transparent;
-  color: ${({ isActive }) => (isActive ? 'var(--green)' : 'var(--slate)')};
-  font-family: var(--font-mono);
-  font-size: var(--fz-xs);
-  text-align: left;
-  white-space: nowrap;
+const StyledHeader = styled.div`
+  text-align: center;
+  margin-bottom: 60px;
 
   @media (max-width: 768px) {
-    padding: 0 15px 2px;
-  }
-  @media (max-width: 600px) {
-    ${({ theme }) => theme.mixins.flexCenter};
-    min-width: 120px;
-    padding: 0 15px;
-    border-left: 0;
-    border-bottom: 2px solid var(--lightest-navy);
-    text-align: center;
-  }
-
-  &:hover,
-  &:focus {
-    background-color: var(--light-navy);
+    margin-bottom: 40px;
   }
 `;
 
-const StyledHighlight = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  width: 2px;
-  height: var(--tab-height);
-  border-radius: var(--border-radius);
-  background: var(--green);
-  transform: translateY(calc(${({ activeTabId }) => activeTabId} * var(--tab-height)));
-  transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition-delay: 0.1s;
+const StyledLabel = styled.span`
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: var(--fz-xs);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 15px;
+`;
 
-  @media (max-width: 600px) {
-    top: auto;
-    bottom: 0;
-    width: 100%;
-    max-width: var(--tab-width);
-    height: 2px;
-    margin-left: 50px;
-    transform: translateX(calc(${({ activeTabId }) => activeTabId} * var(--tab-width)));
-  }
-  @media (max-width: 480px) {
-    margin-left: 25px;
+const StyledTitle = styled.h2`
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--lightest-slate);
+  margin: 0;
+
+  .highlight {
+    font-style: italic;
+    color: var(--rose);
   }
 `;
 
-const StyledTabPanels = styled.div`
-  position: relative;
-  width: 100%;
-  margin-left: 20px;
-
-  @media (max-width: 600px) {
-    margin-left: 0;
-  }
+const StyledJobsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 `;
 
-const StyledTabPanel = styled.div`
-  width: 100%;
-  height: auto;
-  padding: 10px 5px;
+const StyledJobItem = styled.div`
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 40px;
+  padding: 35px 0;
+  border-bottom: 1px solid var(--lightest-navy);
+  transition: var(--transition);
 
-  ul {
-    ${({ theme }) => theme.mixins.fancyList};
+  &:first-child {
+    border-top: 1px solid var(--lightest-navy);
   }
 
-  h3 {
-    margin-bottom: 2px;
-    font-size: var(--fz-xxl);
-    font-weight: 500;
-    line-height: 1.3;
+  &:hover {
+    .job-content {
+      transform: translateX(5px);
+    }
 
-    .company {
+    .job-date {
       color: var(--green);
     }
   }
 
-  .range {
-    margin-bottom: 25px;
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 25px 0;
+  }
+`;
+
+const StyledDate = styled.div`
+  font-family: var(--font-sans);
+  font-size: var(--fz-sm);
+  color: var(--slate);
+  padding-top: 5px;
+  transition: var(--transition);
+
+  @media (max-width: 600px) {
+    padding-top: 0;
+  }
+`;
+
+const StyledContent = styled.div`
+  transition: transform 0.3s ease;
+`;
+
+const StyledCompanyRow = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 4px;
+  }
+`;
+
+const StyledCompany = styled.h3`
+  font-family: var(--font-serif);
+  font-size: var(--fz-xl);
+  font-weight: 500;
+  color: var(--lightest-slate);
+  margin: 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
+
+    &:hover {
+      color: var(--green);
+    }
+  }
+`;
+
+const StyledRole = styled.span`
+  font-family: var(--font-sans);
+  font-size: var(--fz-sm);
+  color: var(--slate);
+
+  &::before {
+    content: '—';
+    margin-right: 8px;
     color: var(--light-slate);
-    font-family: var(--font-mono);
-    font-size: var(--fz-xs);
+
+    @media (max-width: 600px) {
+      display: none;
+    }
+  }
+`;
+
+const StyledLocation = styled.span`
+  font-family: var(--font-sans);
+  font-size: var(--fz-xs);
+  color: var(--light-slate);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 15px;
+
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+`;
+
+const StyledDescription = styled.div`
+  font-family: var(--font-sans);
+  font-size: var(--fz-md);
+  line-height: 1.7;
+  color: var(--slate);
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 10px;
+        width: 5px;
+        height: 5px;
+        background-color: var(--green);
+        border-radius: 50%;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  p {
+    margin: 0;
   }
 `;
 
@@ -188,10 +219,6 @@ const Jobs = () => {
   `);
 
   const jobsData = data.jobs.edges;
-
-  const [activeTabId, setActiveTabId] = useState(0);
-  const [tabFocus, setTabFocus] = useState(null);
-  const tabs = useRef([]);
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -203,106 +230,56 @@ const Jobs = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const focusTab = () => {
-    if (tabs.current[tabFocus]) {
-      tabs.current[tabFocus].focus();
-      return;
-    }
-    // If we're at the end, go to the start
-    if (tabFocus >= tabs.current.length) {
-      setTabFocus(0);
-    }
-    // If we're at the start, move to the end
-    if (tabFocus < 0) {
-      setTabFocus(tabs.current.length - 1);
-    }
-  };
-
-  // Only re-run the effect if tabFocus changes
-  useEffect(() => focusTab(), [tabFocus]);
-
-  // Focus on tabs when using up & down arrow keys
-  const onKeyDown = e => {
-    switch (e.key) {
-      case KEY_CODES.ARROW_UP: {
-        e.preventDefault();
-        setTabFocus(tabFocus - 1);
-        break;
-      }
-
-      case KEY_CODES.ARROW_DOWN: {
-        e.preventDefault();
-        setTabFocus(tabFocus + 1);
-        break;
-      }
-
-      default: {
-        break;
-      }
-    }
-  };
-
   return (
     <StyledJobsSection id="jobs" ref={revealContainer}>
-      <h2 className="numbered-heading">Where I’ve Worked</h2>
+      <StyledHeader>
+        <StyledLabel>Experience</StyledLabel>
+        <StyledTitle>
+          Where I've <span className="highlight">worked</span>
+        </StyledTitle>
+      </StyledHeader>
 
-      <div className="inner">
-        <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
-          {jobsData &&
-            jobsData.map(({ node }, i) => {
-              const { company } = node.frontmatter;
-              return (
-                <StyledTabButton
-                  key={i}
-                  isActive={activeTabId === i}
-                  onClick={() => setActiveTabId(i)}
-                  ref={el => (tabs.current[i] = el)}
-                  id={`tab-${i}`}
-                  role="tab"
-                  tabIndex={activeTabId === i ? '0' : '-1'}
-                  aria-selected={activeTabId === i ? true : false}
-                  aria-controls={`panel-${i}`}>
-                  <span>{company}</span>
-                </StyledTabButton>
-              );
-            })}
-          <StyledHighlight activeTabId={activeTabId} />
-        </StyledTabList>
+      <StyledJobsList>
+        {jobsData &&
+          jobsData.map(({ node }, i) => {
+            const { frontmatter, html } = node;
+            const { title, url, company, range, location } = frontmatter;
 
-        <StyledTabPanels>
-          {jobsData &&
-            jobsData.map(({ node }, i) => {
-              const { frontmatter, html } = node;
-              const { title, url, company, range } = frontmatter;
+            return (
+              <StyledJobItem key={i}>
+                <StyledDate className="job-date">{range}</StyledDate>
 
-              return (
-                <CSSTransition key={i} in={activeTabId === i} timeout={250} classNames="fade">
-                  <StyledTabPanel
-                    id={`panel-${i}`}
-                    role="tabpanel"
-                    tabIndex={activeTabId === i ? '0' : '-1'}
-                    aria-labelledby={`tab-${i}`}
-                    aria-hidden={activeTabId !== i}
-                    hidden={activeTabId !== i}>
-                    <h3>
-                      <span>{title}</span>
-                      <span className="company">
-                        &nbsp;@&nbsp;
-                        <a href={url} className="inline-link">
-                          {company}
-                        </a>
-                      </span>
-                    </h3>
+                <StyledContent className="job-content">
+                  <StyledCompanyRow>
+                    <StyledCompany>
+                      <a href={url} target="_blank" rel="noreferrer">
+                        {company}
+                      </a>
+                    </StyledCompany>
+                    <StyledRole>{title}</StyledRole>
+                  </StyledCompanyRow>
 
-                    <p className="range">{range}</p>
+                  {location && (
+                    <StyledLocation>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                      {location}
+                    </StyledLocation>
+                  )}
 
-                    <div dangerouslySetInnerHTML={{ __html: html }} />
-                  </StyledTabPanel>
-                </CSSTransition>
-              );
-            })}
-        </StyledTabPanels>
-      </div>
+                  <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
+                </StyledContent>
+              </StyledJobItem>
+            );
+          })}
+      </StyledJobsList>
     </StyledJobsSection>
   );
 };
