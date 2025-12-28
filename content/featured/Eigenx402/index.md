@@ -1,5 +1,5 @@
 ---
-date: '2'
+date: '1'
 title: 'Eigenx402'
 cover: './demo.png'
 github: 'https://www.npmjs.com/package/@mugdha26/eigenx402-client-sdk'

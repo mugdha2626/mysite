@@ -1,5 +1,5 @@
 ---
-date: '0'
+date: '4'
 title: 'Stax Trading'
 cover: './demo.png'
 github: ''

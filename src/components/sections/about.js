@@ -122,11 +122,15 @@ const useCountUp = (end, duration = 2000, startCounting) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!startCounting) {return;}
+    if (!startCounting) {
+      return;
+    }
 
     let startTime;
     const animate = currentTime => {
-      if (!startTime) {startTime = currentTime;}
+      if (!startTime) {
+        startTime = currentTime;
+      }
       const progress = Math.min((currentTime - startTime) / duration, 1);
 
       // Easing function for smooth animation
@@ -201,7 +205,7 @@ const About = () => {
   }, []);
 
   const stats = [
-    { number: 10, suffix: '+', label: 'Hackathon Wins' },
+    { number: 8, suffix: '+', label: 'Hackathon Wins' },
     { number: 15, suffix: 'k+', label: 'Grants & Bounties', prefix: '$' },
     { number: 40, suffix: '+', label: 'Developers Led' },
     { number: 14, suffix: '+', label: 'Paying Customers' },
