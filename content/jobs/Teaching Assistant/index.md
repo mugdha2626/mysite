@@ -7,5 +7,5 @@ range: 'Jan 2025 - Present'
 url: 'https://www.boilerblockchain.org/courses'
 ---
 
-- Mentored 40+ students in the class "Principles and Practices of Blockchain", explaining complex cryptographic concepts, smart contract programming, and decentralized applications
-- Applied Solidity, ethers.js, and Hardhat in teaching and course material development
+- Mentored 40+ students in "Principles and Practices of Blockchain" on cryptography, smart contracts, and decentralized applications
+- Built course material and labs using Solidity, ethers.js, and Hardhat

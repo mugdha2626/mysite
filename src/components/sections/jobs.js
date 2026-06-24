@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
+import { highlightMetrics } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
 
 const StyledJobsSection = styled.section`
@@ -163,6 +164,23 @@ const StyledDescription = styled.div`
   line-height: 1.7;
   color: var(--slate);
 
+  .metric {
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  a {
+    color: var(--green);
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+
+    &:hover {
+      border-bottom-color: var(--green);
+    }
+  }
+
   ul {
     padding: 0;
     margin: 0;
@@ -274,7 +292,7 @@ const Jobs = () => {
                     </StyledLocation>
                   )}
 
-                  <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
+                  <StyledDescription dangerouslySetInnerHTML={{ __html: highlightMetrics(html) }} />
                 </StyledContent>
               </StyledJobItem>
             );

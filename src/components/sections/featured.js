@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
+import { highlightMetrics } from '@utils';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 
@@ -55,20 +56,6 @@ const StyledHeaderLeft = styled.div`
       font-style: italic;
       color: var(--green);
     }
-  }
-`;
-
-const StyledHeaderRight = styled.p`
-  max-width: 400px;
-  font-family: var(--font-sans);
-  font-size: var(--fz-md);
-  line-height: 1.6;
-  color: var(--slate);
-  margin: 0;
-  padding-top: 40px;
-
-  @media (max-width: 768px) {
-    padding-top: 0;
   }
 `;
 
@@ -255,6 +242,11 @@ const StyledDescription = styled.div`
   color: var(--slate);
   margin-bottom: 20px;
 
+  .metric {
+    color: var(--green);
+    font-weight: 600;
+  }
+
   p {
     margin: 0;
   }
@@ -355,9 +347,6 @@ const Featured = () => {
             <span className="highlight-green">builds</span>
           </h2>
         </StyledHeaderLeft>
-        <StyledHeaderRight>
-          Award-winning projects from hackathons and grants, building the future of web3.
-        </StyledHeaderRight>
       </StyledHeader>
 
       <StyledProjectsGrid>
@@ -406,7 +395,7 @@ const Featured = () => {
                     </a>
                   </StyledProjectTitle>
 
-                  <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
+                  <StyledDescription dangerouslySetInnerHTML={{ __html: highlightMetrics(html) }} />
 
                   {tech && tech.length > 0 && (
                     <StyledTechList>

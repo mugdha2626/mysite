@@ -4,6 +4,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
+import { highlightMetrics } from '@utils';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 
@@ -191,6 +192,11 @@ const StyledProjectDescription = styled.div`
   flex-grow: 1;
   margin-bottom: 20px;
 
+  .metric {
+    color: var(--green);
+    font-weight: 600;
+  }
+
   p {
     margin: 0;
   }
@@ -321,7 +327,7 @@ const Projects = () => {
           </a>
         </StyledProjectTitle>
 
-        <StyledProjectDescription dangerouslySetInnerHTML={{ __html: html }} />
+        <StyledProjectDescription dangerouslySetInnerHTML={{ __html: highlightMetrics(html) }} />
 
         {tech && tech.length > 0 && (
           <StyledTechList>
