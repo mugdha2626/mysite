@@ -223,16 +223,25 @@ const About = () => {
           </h2>
 
           <p className="description">
-            Currently, I'm conducting AI research while leading development teams at{' '}
+            I'm drawn to <span className="highlight-green">fintech</span> — building the rails that
+            move money and markets. This summer I'm a software engineering intern at{' '}
+            <a href="https://ellipsislabs.xyz" target="_blank" rel="noreferrer">
+              Ellipsis Labs
+            </a>{' '}
+            in New York City, after shipping the Points Rewards system for Decibel at{' '}
+            <a href="https://aptoslabs.com" target="_blank" rel="noreferrer">
+              Aptos Labs
+            </a>
+            . I lead a 40+ developer team at{' '}
             <a href="https://boilerblockchain.org" target="_blank" rel="noreferrer">
               Boiler Blockchain
             </a>{' '}
-            and co-founding{' '}
+            and co-founded{' '}
             <a href="https://www.stax.so/" target="_blank" rel="noreferrer">
               Stax Trading
             </a>
-            . I've built crypto trading simulators used by 14+ university clubs and
-            hackathon-winning DeFi applications that earned over $15,000 in grants and bounties.
+            — shipping trading simulators used by 14+ university clubs and hackathon-winning DeFi
+            apps that have earned over $15,000 in grants and bounties.
           </p>
 
           <StyledDivider />

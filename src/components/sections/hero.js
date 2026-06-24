@@ -23,16 +23,52 @@ const pulse = keyframes`
   }
 `;
 
+const blink = keyframes`
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+`;
+
+const auroraShift = keyframes`
+  0% {
+    background-position: 12% 18%, 88% 82%;
+  }
+  50% {
+    background-position: 26% 32%, 74% 68%;
+  }
+  100% {
+    background-position: 12% 18%, 88% 82%;
+  }
+`;
+
 const StyledHeroSection = styled.section`
   ${({ theme }) => theme.mixins.flexCenter};
   min-height: 100vh;
   padding-top: var(--nav-height);
   padding-bottom: 50px;
   position: relative;
+  overflow: hidden;
+
+  /* Full-bleed ambient wash — radial glows fade to transparent, so it always
+     fills the section and never looks cropped. Sizes are viewport-relative. */
+  background-image: radial-gradient(circle, var(--card-green) 0%, transparent 70%),
+    radial-gradient(circle, var(--card-rose) 0%, transparent 70%);
+  background-repeat: no-repeat;
+  background-size: 75% 75%, 70% 70%;
+  background-position: 12% 18%, 88% 82%;
+  animation: ${auroraShift} 24s ease-in-out infinite;
 
   @media (max-width: 768px) {
     flex-direction: column-reverse;
     padding-top: calc(var(--nav-height) + 50px);
+    background-size: 110% 60%, 100% 55%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
   }
 `;
 
@@ -43,6 +79,8 @@ const StyledContent = styled.div`
   align-items: center;
   width: 100%;
   max-width: 1200px;
+  position: relative;
+  z-index: 1;
 
   @media (max-width: 1080px) {
     gap: 40px;
@@ -110,6 +148,20 @@ const StyledTextContent = styled.div`
       font-style: italic;
       color: var(--rose);
     }
+
+    .rotating {
+      display: inline-block;
+      color: var(--green);
+    }
+
+    .type-cursor {
+      display: inline-block;
+      margin-left: 2px;
+      font-style: normal;
+      font-weight: 300;
+      color: var(--green);
+      animation: ${blink} 1s step-end infinite;
+    }
   }
 
   .description {
@@ -119,6 +171,11 @@ const StyledTextContent = styled.div`
     line-height: 1.6;
     max-width: 500px;
     margin-bottom: 40px;
+
+    .highlight {
+      color: var(--green);
+      font-weight: 600;
+    }
 
     @media (max-width: 768px) {
       margin-left: auto;
@@ -292,6 +349,53 @@ const StyledScrollIndicator = styled.a`
   }
 `;
 
+const ROTATING_WORDS = ['fintech.', 'DeFi rails.', 'trading systems.', 'things people use.'];
+
+const RotatingWord = () => {
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      return undefined;
+    }
+
+    const word = ROTATING_WORDS[index];
+
+    // Finished typing — hold, then start deleting.
+    if (!deleting && subIndex === word.length) {
+      const hold = setTimeout(() => setDeleting(true), 1700);
+      return () => clearTimeout(hold);
+    }
+
+    // Finished deleting — advance to the next word.
+    if (deleting && subIndex === 0) {
+      setDeleting(false);
+      setIndex(prev => (prev + 1) % ROTATING_WORDS.length);
+      return undefined;
+    }
+
+    const tick = setTimeout(
+      () => setSubIndex(prev => prev + (deleting ? -1 : 1)),
+      deleting ? 45 : 85,
+    );
+    return () => clearTimeout(tick);
+  }, [subIndex, deleting, index, prefersReducedMotion]);
+
+  if (prefersReducedMotion) {
+    return <span className="highlight">fintech.</span>;
+  }
+
+  return (
+    <span className="rotating">
+      {ROTATING_WORDS[index].substring(0, subIndex)}
+      <span className="type-cursor">|</span>
+    </span>
+  );
+};
+
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -314,11 +418,12 @@ const Hero = () => {
         <h1 className="name">Mugdha</h1>
         <h1 className="last-name">Patil</h1>
         <p className="tagline">
-          and I love <span className="highlight">building.</span>
+          and I love building <RotatingWord />
         </p>
         <p className="description">
-          I'm a CS student at Purdue University specializing in AI/ML, blockchain development and
-          full-stack applications.
+          I'm a CS student at Purdue University building at the intersection of{' '}
+          <span className="highlight">fintech</span>, blockchain, and AI/ML — from on-chain trading
+          systems to full-stack products.
         </p>
         <div className="social-links">
           <a href="https://github.com/mugdha2626" target="_blank" rel="noreferrer">
