@@ -1,0 +1,152 @@
+.page {
+  max-width: 660px;
+  margin: 0 auto;
+  padding: 56px 24px 132px;
+}
+
+.greeting {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  font-weight: 500;
+  color: var(--ink-strong);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.greeting em {
+  font-style: italic;
+  color: var(--rose);
+}
+
+.tagline {
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 3vw, 1.7rem);
+  font-weight: 400;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+  min-height: 1.5em;
+}
+.rotating {
+  color: var(--green);
+  font-style: italic;
+}
+.caret {
+  display: inline-block;
+  margin-left: 1px;
+  color: var(--green);
+  font-style: normal;
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-size: var(--fz-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 40px 0 18px;
+}
+
+/* Photo floats right; text wraps like an editorial column. */
+.portrait {
+  float: right;
+  width: 210px;
+  margin: 4px 0 18px 30px;
+  shape-outside: inset(0 round var(--radius-lg));
+}
+.portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--surface-raised);
+  box-shadow: 0 26px 50px -26px var(--shadow-warm);
+  animation: floaty 6.5s ease-in-out infinite;
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@media (max-width: 560px) {
+  .portrait {
+    float: none;
+    width: 200px;
+    margin: 0 0 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .portrait img, .caret { animation: none; }
+}
+
+.about p {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+.about a {
+  color: var(--green);
+  text-decoration: underline;
+  text-decoration-color: var(--surface-raised);
+  text-underline-offset: 3px;
+  transition: text-decoration-color var(--dur-fast) var(--ease-out);
+}
+.about a:hover {
+  text-decoration-color: var(--green);
+}
+.about strong {
+  color: var(--ink-strong);
+  font-weight: 600;
+}
+
+/* Get in touch - icon links */
+.touch {
+  clear: both;
+}
+.touchText {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--ink);
+  margin-bottom: 18px;
+}
+.contact {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+}
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--ink);
+  font-size: var(--fz-base);
+  transition: color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.contactLink svg {
+  width: 20px;
+  height: 20px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .contactLink:hover {
+    color: var(--green);
+    transform: translateY(-2px);
+  }
+}
+
+.footer {
+  margin-top: 64px;
+  padding-top: 26px;
+  border-top: 1px solid var(--surface);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  font-family: var(--font-mono);
+  font-size: var(--fz-xs);
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
