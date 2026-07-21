@@ -1,0 +1,117 @@
+@import './tokens.css';
+
+/*
+ * Craft reset - the "invisible details" baked in globally.
+ * Every rule here traces to interfaces.rauno.me. This is the nervous system.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* Anchor nav lands below the fixed header, and glides there. */
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 24px);
+  -webkit-text-size-adjust: 100%; /* no iOS landscape text resizing */
+  color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fz-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  /* Replace the ugly iOS tap flash with our own considered states. */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Warm, brand-tinted text selection. No gradient bleed (interfaces rule). */
+::selection {
+  background: var(--green-tint);
+  color: var(--ink-max);
+}
+
+/* Numerals never jitter - tables, tickers, times, metrics. */
+.tabular,
+time,
+[data-numeric] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+/* Focus rings via box-shadow so they follow border-radius. Keyboard-only. */
+:focus {
+  outline: none;
+}
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring);
+  border-radius: var(--radius-sm);
+}
+
+/* Interactive chrome shouldn't be text-selectable; decorations shouldn't
+   steal pointer events. */
+button,
+a,
+[role='button'],
+label {
+  -webkit-user-select: none;
+  user-select: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+svg {
+  display: block;
+}
+
+img,
+picture,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Global reduced-motion honor - kill non-essential animation. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Utility: the handwriting signature accent. */
+.hand {
+  font-family: var(--font-hand);
+  font-weight: 400;
+}
