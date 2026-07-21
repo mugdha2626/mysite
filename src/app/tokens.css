@@ -1,0 +1,82 @@
+/*
+ * Design tokens - Mugdha Patil
+ * Warm, demure, editorial. Ported 1:1 from the existing site's palette.
+ * Cream ground · deep forest green · dusty rose. Do not cool these down.
+ */
+:root {
+  /* Cream ground */
+  --cream: #f9f8f6;
+  --cream-light: #fdfcfb;
+  --cream-dark: #f0eeeb;
+
+  /* Surfaces (light → progressively deeper warm neutrals) */
+  --bg: #fdfcfb;
+  --bg-soft: #f9f8f6;
+  --surface: #f0eeeb;
+  --surface-raised: #e8e5e0;
+  --shadow-warm: rgba(45, 90, 74, 0.08);
+
+  /* Ink (text) - warm dark, never pure black */
+  --ink-faint: #9a9590;
+  --ink-soft: #6b6560;
+  --ink: #4a4540;
+  --ink-strong: #2a2520;
+  --ink-max: #1a1510;
+
+  /* Accents - deep forest green + dusty rose */
+  --green: #2d5a4a;
+  --green-light: #3d7a64;
+  --green-tint: rgba(45, 90, 74, 0.1);
+  --rose: #c4a3a3;
+  --rose-light: #d4b8b8;
+  --rose-icon: #b0838a; /* deeper dusty rose - enough contrast for small icons */
+  --rose-tint: rgba(196, 163, 163, 0.2);
+
+  /* Soft card washes */
+  --card-green: #d4e4db;
+  --card-rose: #e8dede;
+  --card-cream: #f5f2ed;
+  --card-sage: #dce5dc;
+
+  /* Console surface - a warm, deep "trading desk" for the ⌘K overlay.
+     Dark but tinted toward the green so it stays part of the same world. */
+  --console-bg: #1c2420;
+  --console-surface: #232d28;
+  --console-border: rgba(212, 228, 219, 0.12);
+  --console-ink: #e8e5e0;
+  --console-ink-soft: #9fb0a6;
+  --console-accent: #6fae90;
+
+  /* Type - --font-sans / --font-serif / --font-mono / --font-hand are injected
+     by next/font on <html> (see fonts.ts + layout.tsx). Not redefined here so
+     the self-hosted faces + their zero-shift fallbacks always win. */
+
+  /* Fluid type scale */
+  --fz-xs: 0.75rem;   /* 12 */
+  --fz-sm: 0.8125rem; /* 13 */
+  --fz-base: 1rem;
+  --fz-lg: 1.125rem;
+  --fz-xl: 1.25rem;
+  --fz-2xl: 1.5rem;
+  --fz-display: clamp(3rem, 10vw, 7rem);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 30px;
+
+  /* Motion - Rauno's rule: interactions feel immediate (<200ms), springs for delight.
+     Never exceed these for high-frequency actions. */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --dur-instant: 120ms;
+  --dur-fast: 180ms;
+  --dur-base: 260ms;
+
+  /* Focus ring - box-shadow so it respects border-radius (interfaces.rauno.me) */
+  --ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--green);
+
+  --nav-height: 72px;
+  --max-width: 1100px;
+}
