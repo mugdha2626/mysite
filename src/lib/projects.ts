@@ -17,6 +17,17 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
+    id: 'cacheapp',
+    title: 'CacheApp',
+    year: '2026',
+    blurb:
+      'A marketplace and CLI that lets AI agents buy and sell pre-computed deep research. Instead of re-running multi-million-token research loops, an agent queries CacheApp over MCP, semantically matches its question against completed research, and retrieves the report in seconds.',
+    tech: ['TypeScript', 'Python', 'FastAPI', 'MCP', 'CLI'],
+    award: '◆ Finalist at the Ramp Hackathon · Save Time / Save Money tracks',
+    href: 'https://github.com/mugdha2626/cachedApp',
+    accent: '#8f7189',
+  },
+  {
     id: 'nyx',
     title: 'Nyx',
     year: '2026',

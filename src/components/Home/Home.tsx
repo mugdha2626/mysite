@@ -92,49 +92,41 @@ export default function Home() {
             <a href="https://aptoslabs.com" target="_blank" rel="noreferrer">
               Aptos Labs
             </a>
-            . Most of what I build sits somewhere between markets, crypto infrastructure, and AI.
-            I&apos;ve won <strong>9+ hackathons</strong>.
+            . I&apos;m drawn to fintech, to building the rails that move money.
           </p>
 
-          <p className={styles.listHead}>Some things I&apos;ve built:</p>
-          <ul className={styles.list}>
+          <ul className={styles.stats}>
             <li>
-              <Link href="/projects">Nyx</Link>, a fully private perpetual DEX with an encrypted
-              order book
-              <br />
-              <span className={styles.sub}>
-                <strong>1st place</strong> at ETHGlobal New York, <strong>$4,000</strong>
+              <span className={styles.statNum} data-numeric>
+                9+
               </span>
+              <span className={styles.statLabel}>hackathon wins</span>
             </li>
             <li>
-              Decibel&apos;s Points Rewards at{' '}
-              <a href="https://aptoslabs.com" target="_blank" rel="noreferrer">
-                Aptos Labs
-              </a>
-              , owned end to end
-              <br />
-              <span className={styles.sub}>
-                sole engineer, live with <strong>10,000+</strong> users
+              <span className={styles.statNum} data-numeric>
+                $15k+
               </span>
+              <span className={styles.statLabel}>grants &amp; bounties</span>
             </li>
             <li>
-              <a href="https://www.stax.so" target="_blank" rel="noreferrer">
-                Stax
-              </a>
-              , a real-time crypto trading simulator
-              <br />
-              <span className={styles.sub}>
-                <strong>14+</strong> university clubs as paying customers
+              <span className={styles.statNum} data-numeric>
+                40+
               </span>
+              <span className={styles.statLabel}>developers led</span>
             </li>
             <li>
-              <Link href="/projects">Eigen x402</Link>, pay-per-inference AI payments
-              <br />
-              <span className={styles.sub}>
-                Eigen Layer grant, published as an npm package
+              <span className={styles.statNum} data-numeric>
+                14+
               </span>
+              <span className={styles.statLabel}>paying customers</span>
             </li>
           </ul>
+
+          <p>
+            Lately that&apos;s meant a private perpetual DEX, a trading simulator used by
+            university clubs, and a marketplace that lets AI agents reuse deep research.{' '}
+            <Link href="/projects">See everything I&apos;ve built</Link>.
+          </p>
 
           <p className={styles.listHead}>Some things I&apos;m interested in:</p>
           <ul className={styles.list}>
