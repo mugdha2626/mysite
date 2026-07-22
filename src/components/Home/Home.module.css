@@ -127,9 +127,18 @@
   margin-bottom: 6px;
 }
 .list li {
+  position: relative;
+  padding-left: 18px;
   font-size: 1.0625rem;
   line-height: 1.6;
   color: var(--ink);
+}
+.list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--green);
 }
 .sub {
   color: var(--ink-soft);
