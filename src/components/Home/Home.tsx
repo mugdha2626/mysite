@@ -123,8 +123,6 @@ export default function Home() {
           </ul>
 
           <p>
-            Lately that&apos;s meant a private perpetual DEX, a trading simulator used by
-            university clubs, and a marketplace that lets AI agents reuse deep research.{' '}
             <Link href="/projects">See everything I&apos;ve built</Link>.
           </p>
 
