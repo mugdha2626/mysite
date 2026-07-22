@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { motion, useReducedMotion } from 'motion/react';
 import styles from './Home.module.css';
 
@@ -121,10 +120,6 @@ export default function Home() {
               <span className={styles.statLabel}>paying customers</span>
             </li>
           </ul>
-
-          <p>
-            <Link href="/projects">See everything I&apos;ve built</Link>.
-          </p>
 
           <p className={styles.listHead}>Some things I&apos;m interested in:</p>
           <ul className={styles.list}>
