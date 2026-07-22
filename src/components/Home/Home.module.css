@@ -127,64 +127,16 @@
   margin-bottom: 6px;
 }
 .list li {
-  position: relative;
-  padding-left: 22px;
   font-size: 1.0625rem;
   line-height: 1.6;
   color: var(--ink);
-}
-.list li::before {
-  content: '*';
-  position: absolute;
-  left: 2px;
-  top: 0.1em;
-  color: var(--green);
-  font-family: var(--font-mono);
 }
 .sub {
   color: var(--ink-soft);
   font-size: 0.95rem;
 }
 
-/* Quantified stats strip - mono numerals, trading-desk flavour */
-.stats {
-  list-style: none;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin: 26px 0 6px;
-  padding: 18px 0;
-  border-top: 1px solid var(--surface);
-  border-bottom: 1px solid var(--surface);
-}
-.stats li {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  min-width: 0;
-}
-.statNum {
-  font-family: var(--font-mono);
-  font-size: clamp(1.05rem, 3.4vw, 1.35rem);
-  font-weight: 600;
-  color: var(--green);
-  font-variant-numeric: tabular-nums;
-  line-height: 1.1;
-}
-.statLabel {
-  font-family: var(--font-mono);
-  font-size: clamp(0.62rem, 2vw, 0.72rem);
-  letter-spacing: 0.03em;
-  color: var(--ink-faint);
-  line-height: 1.3;
-}
-/* Two-up on narrow screens so nothing ever squeezes. */
-@media (max-width: 460px) {
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px 12px;
-  }
-}
+
 
 /* Get in touch - icon links */
 .touch {

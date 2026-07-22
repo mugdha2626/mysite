@@ -88,37 +88,13 @@ export default function Home() {
             <a href="https://boilerblockchain.org" target="_blank" rel="noreferrer">
               Boiler Blockchain
             </a>
-            . I&apos;ve shipped systems used by tens of thousands of people and won{' '}
-            <strong>five ETHGlobal hackathons</strong> along the way. I like getting my hands dirty
-            on hard problems: markets, on-chain infra, and AI that actually ships.
+            . Before that I was at{' '}
+            <a href="https://aptoslabs.com" target="_blank" rel="noreferrer">
+              Aptos Labs
+            </a>
+            . Most of what I build sits somewhere between markets, crypto infrastructure, and AI.
+            I&apos;ve won <strong>9+ hackathons</strong>.
           </p>
-
-          <ul className={styles.stats}>
-            <li>
-              <span className={styles.statNum} data-numeric>
-                5
-              </span>
-              <span className={styles.statLabel}>hackathon wins</span>
-            </li>
-            <li>
-              <span className={styles.statNum} data-numeric>
-                $11.5k
-              </span>
-              <span className={styles.statLabel}>in prizes</span>
-            </li>
-            <li>
-              <span className={styles.statNum} data-numeric>
-                10,000+
-              </span>
-              <span className={styles.statLabel}>users served</span>
-            </li>
-            <li>
-              <span className={styles.statNum} data-numeric>
-                40+
-              </span>
-              <span className={styles.statLabel}>devs led</span>
-            </li>
-          </ul>
 
           <p className={styles.listHead}>Some things I&apos;ve built:</p>
           <ul className={styles.list}>
@@ -162,11 +138,10 @@ export default function Home() {
 
           <p className={styles.listHead}>Some things I&apos;m interested in:</p>
           <ul className={styles.list}>
-            <li>market microstructure and trading infra</li>
-            <li>DeFi rails and on-chain settlement</li>
-            <li>AI agents that actually ship</li>
-            <li>teaching. I TA Purdue&apos;s blockchain course</li>
-            <li>getting the small details right</li>
+            <li>market microstructure and trading infrastructure</li>
+            <li>on-chain settlement and DeFi rails</li>
+            <li>AI agents</li>
+            <li>teaching, I TA Purdue&apos;s blockchain course</li>
           </ul>
         </div>
 
