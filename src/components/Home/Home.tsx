@@ -67,37 +67,75 @@ export default function Home() {
         </div>
 
         <div className={styles.about} style={{ marginTop: 34 }}>
-          <p>
-            I&apos;m a Computer Science student at{' '}
-            <a href="https://www.purdue.edu" target="_blank" rel="noreferrer">
-              Purdue
-            </a>{' '}
-            building at the intersection of <strong>fintech</strong>, crypto, and AI.
-          </p>
-          <p>
-            I co-founded{' '}
-            <a href="https://www.stax.so" target="_blank" rel="noreferrer">
-              Stax
-            </a>{' '}
-            (a crypto trading simulator used by 14+ university clubs), and I&apos;m interning on
-            trading infra at{' '}
+          <p className={styles.lead}>
+            I currently build trading infrastructure at{' '}
             <a href="https://ellipsislabs.xyz" target="_blank" rel="noreferrer">
               Ellipsis Labs
             </a>
-            . This spring I was at{' '}
-            <a href="https://aptoslabs.com" target="_blank" rel="noreferrer">
-              Aptos Labs
-            </a>
-            , building Decibel&apos;s Points Rewards system (10,000+ users).
+            .
           </p>
+
           <p>
-            I lead the dev team at{' '}
+            I study Computer Science at{' '}
+            <a href="https://www.purdue.edu" target="_blank" rel="noreferrer">
+              Purdue
+            </a>
+            , where I co-founded{' '}
+            <a href="https://www.stax.so" target="_blank" rel="noreferrer">
+              Stax
+            </a>{' '}
+            and lead the dev team at{' '}
             <a href="https://boilerblockchain.org" target="_blank" rel="noreferrer">
               Boiler Blockchain
             </a>
-            , TA Purdue&apos;s blockchain course, and I&apos;ve won a bunch of{' '}
-            <Link href="/projects">ETHGlobal hackathons</Link>.
+            . I like getting my hands dirty building things at the intersection of{' '}
+            <strong>fintech</strong>, crypto, and AI, ideally things people actually use.
           </p>
+
+          <p className={styles.listHead}>Some things I&apos;ve built:</p>
+          <ul className={styles.list}>
+            <li>
+              <Link href="/projects">Nyx</Link>, a fully private perpetual DEX
+              <br />
+              <span className={styles.sub}>
+                <strong>1st place</strong> at ETHGlobal New York
+              </span>
+            </li>
+            <li>
+              <a href="https://www.stax.so" target="_blank" rel="noreferrer">
+                Stax
+              </a>
+              , a crypto trading simulator
+              <br />
+              <span className={styles.sub}>
+                used by <strong>14+</strong> university clubs
+              </span>
+            </li>
+            <li>
+              Decibel&apos;s Points Rewards at{' '}
+              <a href="https://aptoslabs.com" target="_blank" rel="noreferrer">
+                Aptos Labs
+              </a>
+              <br />
+              <span className={styles.sub}>
+                live with <strong>10,000+</strong> users
+              </span>
+            </li>
+            <li>
+              <Link href="/projects">Eigen x402</Link>, pay-per-inference AI payments
+              <br />
+              <span className={styles.sub}>backed by an Eigen Layer grant</span>
+            </li>
+          </ul>
+
+          <p className={styles.listHead}>Some things I&apos;m interested in:</p>
+          <ul className={styles.list}>
+            <li>market microstructure and trading infra</li>
+            <li>DeFi rails and on-chain settlement</li>
+            <li>AI agents that actually ship</li>
+            <li>teaching. I TA Purdue&apos;s blockchain course</li>
+            <li>getting the small details right</li>
+          </ul>
         </div>
 
         <div className={styles.touch} style={{ marginTop: 34 }}>
