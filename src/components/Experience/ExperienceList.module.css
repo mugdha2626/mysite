@@ -1,4 +1,4 @@
-/* Soft ambient hue behind the page — warm green + dusty rose, gently drifting. */
+/* Soft ambient hue behind the page - warm green + dusty rose, gently drifting. */
 .aura {
   position: fixed;
   inset: 0;
@@ -159,5 +159,14 @@
   .row {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    padding: 40px 20px 22vh;
+  }
+  .bullets li {
+    font-size: var(--fz-base);
   }
 }

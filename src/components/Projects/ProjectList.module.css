@@ -134,3 +134,12 @@
     padding-left: 60px;
   }
 }
+
+@media (max-width: 480px) {
+  .wrap {
+    padding: 40px 20px 22vh;
+  }
+  .desc {
+    padding-left: 0 !important;
+  }
+}

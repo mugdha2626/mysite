@@ -110,15 +110,42 @@
 
 @media (max-width: 640px) {
   .dock {
-    gap: 2px;
+    gap: 1px;
     padding: 6px 8px;
+    bottom: 14px;
+  }
+  .divider {
+    margin: 0 5px 8px;
   }
   .item {
-    width: 38px;
-    height: 38px;
+    width: 37px;
+    height: 37px;
   }
   .icon {
     width: 19px;
     height: 19px;
+  }
+}
+
+/* Very narrow phones: 9 icons must still fit on one row */
+@media (max-width: 430px) {
+  .dock {
+    gap: 0;
+    padding: 5px 6px;
+    bottom: 12px;
+    border-radius: 18px;
+  }
+  .divider {
+    margin: 0 3px 8px;
+    height: 20px;
+  }
+  .item {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+  }
+  .icon {
+    width: 17px;
+    height: 17px;
   }
 }
