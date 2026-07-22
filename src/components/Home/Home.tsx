@@ -43,7 +43,7 @@ export default function Home() {
 
   return (
     <main className={styles.page}>
-      <motion.div {...fade}>
+      <motion.div className={styles.inner} {...fade}>
         <h1 className={styles.greeting}>
           Hi, I&apos;m <em>Mugdha</em>
         </h1>
@@ -68,11 +68,11 @@ export default function Home() {
 
         <div className={styles.about} style={{ marginTop: 34 }}>
           <p className={styles.lead}>
-            I currently build trading infrastructure at{' '}
+            I build trading infrastructure at{' '}
             <a href="https://ellipsislabs.xyz" target="_blank" rel="noreferrer">
               Ellipsis Labs
             </a>
-            .
+            , the team behind Phoenix, Solana&apos;s fastest on-chain order book.
           </p>
 
           <p>
@@ -88,27 +88,46 @@ export default function Home() {
             <a href="https://boilerblockchain.org" target="_blank" rel="noreferrer">
               Boiler Blockchain
             </a>
-            . I like getting my hands dirty building things at the intersection of{' '}
-            <strong>fintech</strong>, crypto, and AI, ideally things people actually use.
+            . I&apos;ve shipped systems used by tens of thousands of people and won{' '}
+            <strong>five ETHGlobal hackathons</strong> along the way. I like getting my hands dirty
+            on hard problems: markets, on-chain infra, and AI that actually ships.
           </p>
+
+          <ul className={styles.stats}>
+            <li>
+              <span className={styles.statNum} data-numeric>
+                5
+              </span>
+              <span className={styles.statLabel}>hackathon wins</span>
+            </li>
+            <li>
+              <span className={styles.statNum} data-numeric>
+                $11.5k
+              </span>
+              <span className={styles.statLabel}>in prizes</span>
+            </li>
+            <li>
+              <span className={styles.statNum} data-numeric>
+                10,000+
+              </span>
+              <span className={styles.statLabel}>users served</span>
+            </li>
+            <li>
+              <span className={styles.statNum} data-numeric>
+                40+
+              </span>
+              <span className={styles.statLabel}>devs led</span>
+            </li>
+          </ul>
 
           <p className={styles.listHead}>Some things I&apos;ve built:</p>
           <ul className={styles.list}>
             <li>
-              <Link href="/projects">Nyx</Link>, a fully private perpetual DEX
+              <Link href="/projects">Nyx</Link>, a fully private perpetual DEX with an encrypted
+              order book
               <br />
               <span className={styles.sub}>
-                <strong>1st place</strong> at ETHGlobal New York
-              </span>
-            </li>
-            <li>
-              <a href="https://www.stax.so" target="_blank" rel="noreferrer">
-                Stax
-              </a>
-              , a crypto trading simulator
-              <br />
-              <span className={styles.sub}>
-                used by <strong>14+</strong> university clubs
+                <strong>1st place</strong> at ETHGlobal New York, <strong>$4,000</strong>
               </span>
             </li>
             <li>
@@ -116,15 +135,28 @@ export default function Home() {
               <a href="https://aptoslabs.com" target="_blank" rel="noreferrer">
                 Aptos Labs
               </a>
+              , owned end to end
               <br />
               <span className={styles.sub}>
-                live with <strong>10,000+</strong> users
+                sole engineer, live with <strong>10,000+</strong> users
+              </span>
+            </li>
+            <li>
+              <a href="https://www.stax.so" target="_blank" rel="noreferrer">
+                Stax
+              </a>
+              , a real-time crypto trading simulator
+              <br />
+              <span className={styles.sub}>
+                <strong>14+</strong> university clubs as paying customers
               </span>
             </li>
             <li>
               <Link href="/projects">Eigen x402</Link>, pay-per-inference AI payments
               <br />
-              <span className={styles.sub}>backed by an Eigen Layer grant</span>
+              <span className={styles.sub}>
+                Eigen Layer grant, published as an npm package
+              </span>
             </li>
           </ul>
 
