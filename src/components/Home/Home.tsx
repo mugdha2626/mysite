@@ -141,7 +141,7 @@ export default function Home() {
             <li>market microstructure and trading infrastructure</li>
             <li>on-chain settlement and DeFi rails</li>
             <li>AI agents</li>
-            <li>teaching, I TA Purdue&apos;s blockchain course</li>
+            <li>hiking and backpacking</li>
           </ul>
         </div>
 
