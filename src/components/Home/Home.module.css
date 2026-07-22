@@ -75,7 +75,8 @@
   .portrait {
     float: none;
     width: 240px;
-    margin: 0 0 26px;
+    margin: 0 auto 26px;
+    align-self: center;
   }
 }
 @media (prefers-reduced-motion: reduce) {
