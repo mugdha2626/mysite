@@ -25,6 +25,7 @@ export const PROJECTS: Project[] = [
     tech: ['TypeScript', 'Python', 'FastAPI', 'MCP', 'CLI'],
     award: '◆ Finalist at the Ramp Hackathon · Save Time / Save Money tracks',
     href: 'https://github.com/mugdha2626/cachedApp',
+    image: '/tiles/cacheapp.png',
     accent: '#8f7189',
   },
   {
