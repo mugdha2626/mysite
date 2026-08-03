@@ -1,5 +1,13 @@
 @import './tokens.css';
 
+/* One typeface everywhere: every font slot resolves to the single sans
+   injected by next/font (see fonts.ts). */
+:root {
+  --font-serif: var(--font-sans);
+  --font-mono: var(--font-sans);
+  --font-hand: var(--font-sans);
+}
+
 /*
  * Craft reset - the "invisible details" baked in globally.
  * Every rule here traces to interfaces.rauno.me. This is the nervous system.

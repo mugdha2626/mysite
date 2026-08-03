@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { inter, playfair, jetbrains, handwriting } from './fonts';
+import { sans } from './fonts';
 import Dock from '@/components/Dock/Dock';
 import './globals.css';
 
@@ -22,10 +22,8 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const fontVars = `${inter.variable} ${playfair.variable} ${jetbrains.variable} ${handwriting.variable}`;
-
   return (
-    <html lang="en" className={fontVars}>
+    <html lang="en" className={sans.variable}>
       <body>
         {children}
         <Dock />
