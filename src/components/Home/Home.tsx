@@ -42,6 +42,7 @@ export default function Home() {
 
   return (
     <main className={styles.page}>
+      <div className={styles.aura} aria-hidden />
       <motion.div className={styles.inner} {...fade}>
         <h1 className={styles.greeting}>
           Hi, I&apos;m <em>Mugdha</em>
@@ -109,7 +110,7 @@ export default function Home() {
             </li>
             <li>
               <span className={styles.statNum} data-numeric>
-                40+
+                60+
               </span>
               <span className={styles.statLabel}>developers led</span>
             </li>

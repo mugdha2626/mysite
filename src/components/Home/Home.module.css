@@ -4,6 +4,27 @@
   padding: 56px 24px 132px;
 }
 
+/* Ambient green + rose hue, matching the experience page. */
+.aura {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 15% 12%, var(--card-green) 0%, transparent 40%),
+    radial-gradient(circle at 82% 80%, var(--card-rose) 0%, transparent 56%),
+    radial-gradient(circle at 92% 40%, var(--rose-tint) 0%, transparent 40%);
+  opacity: 0.85;
+  animation: auraDrift 24s ease-in-out infinite;
+}
+@keyframes auraDrift {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.1) translate(-1.5%, 1.5%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .aura { animation: none; }
+}
+
 .greeting {
   font-family: var(--font-serif);
   font-size: clamp(2.2rem, 6vw, 3.2rem);

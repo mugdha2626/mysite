@@ -21,8 +21,8 @@ export default function ProjectList() {
           <b>//</b> PROJECTS
         </p>
         <p className={styles.lede}>
-          Some built for real users, some for hackathons, some for fun - but all while having fun
-          and with care.
+          Some projects I&apos;ve built with real users in mind, some at hackathons, and some for
+          pure joy. I learnt something every time.
         </p>
       </header>
 
