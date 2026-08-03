@@ -71,7 +71,6 @@ const SOCIAL: Item[] = [
   { id: 'github', label: 'GitHub', icon: I.github, href: PROFILE.socials.github, external: true },
   { id: 'linkedin', label: 'LinkedIn', icon: I.linkedin, href: PROFILE.socials.linkedin, external: true },
   { id: 'twitter', label: 'Twitter', icon: I.twitter, href: PROFILE.socials.twitter, external: true },
-  { id: 'resume', label: 'Résumé', icon: I.resume, href: '/resume.pdf', external: true },
   { id: 'mail', label: 'Email', icon: I.mail, href: `mailto:${PROFILE.email}` },
 ];
 
