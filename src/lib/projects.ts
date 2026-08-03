@@ -29,11 +29,22 @@ export const PROJECTS: Project[] = [
     accent: '#8f7189',
   },
   {
+    id: 'kalshi',
+    title: 'Kalshi Market Maker',
+    year: '2026',
+    blurb:
+      'A Rust bot that quotes two-sided on Kalshi binary contracts: rebuilds book state from the WebSocket feed, requotes every update in ~8ms median, skews against inventory, and prices net of Kalshi’s parabolic fee curve. Recorded +50% on deployed capital over 7 weeks live across 9 markets.',
+    tech: ['Rust', 'WebSocket', 'Market Making'],
+    award: '◆ +50% on deployed capital over 7 weeks live',
+    href: 'https://github.com/mugdha2626',
+    accent: 'var(--green-light)',
+  },
+  {
     id: 'nyx',
     title: 'Nyx',
     year: '2026',
     blurb:
-      'Fully private perpetual DEX with an encrypted order book that blocks front-running and liquidation hunting - trade with leverage against yield-earning RWA collateral.',
+      'A perpetuals DEX with an encrypted order book: resting orders stay sealed until match time, so neither the sequencer nor other traders can front-run flow or hunt liquidations off visible stops. Built the matching path and margin engine against yield-bearing RWA collateral.',
     tech: ['Daml', 'Canton', 'Chainlink', 'C++', 'React'],
     award: '🏆 1st · RWA (Canton) + Best Chainlink · ETHGlobal NY 2026 · $4,000',
     href: 'https://ethglobal.com/showcase/nyx-prk3o',
