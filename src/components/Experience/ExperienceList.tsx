@@ -36,11 +36,13 @@ export default function ExperienceList() {
             </span>
 
             <span className={styles.desc}>
-              <ul className={styles.bullets}>
-                {r.bullets.map((b, j) => (
-                  <li key={j}>{boldNums(b)}</li>
-                ))}
-              </ul>
+              {r.bullets.length > 0 && (
+                <ul className={styles.bullets}>
+                  {r.bullets.map((b, j) => (
+                    <li key={j}>{boldNums(b)}</li>
+                  ))}
+                </ul>
+              )}
               {r.tech && r.tech.length > 0 && (
                 <div className={styles.tech}>
                   {r.tech.map(t => (

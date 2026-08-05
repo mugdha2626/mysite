@@ -22,10 +22,7 @@ export const ROLES: Role[] = [
     year: '2026',
     location: 'New York, NY',
     url: 'https://www.ellipsislabs.xyz/',
-    bullets: [
-      'Lead product engineer on Phoenix-O1, a binary-outcome prediction market on Solana’s crankless on-chain order book. Built order entry against a live price-time-priority book: streams depth over WebSocket, previews fill price and slippage before signing, and reconciles optimistic state against on-chain settlement.',
-      'Wrote a Rust market maker quoting two-sided across 8+ live markets, computing fair value and quoting around an inventory-skewed reservation price that widens with realized volatility.',
-    ],
+    bullets: [],
     tech: ['Rust', 'Solana', 'WebSocket'],
   },
   {
@@ -38,8 +35,6 @@ export const ROLES: Role[] = [
     url: 'https://aptoslabs.com',
     bullets: [
       'Sole engineer on the Points Rewards system for Decibel, Aptos’s perpetual futures DEX: designed the accrual model, built the backend, and shipped to production. Live with 10,000+ traders.',
-      'Built the Rust indexer consuming fills and funding events to attribute points per trade, sustaining 2.4M events/day.',
-      'Cut leaderboard p99 from 840ms to 11ms by replacing the full-table rank scan with an incrementally refreshed rank table.',
     ],
     tech: ['Rust', 'PostgreSQL', 'SQL'],
   },

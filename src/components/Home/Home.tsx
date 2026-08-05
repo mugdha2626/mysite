@@ -68,11 +68,11 @@ export default function Home() {
 
         <div className={styles.about} style={{ marginTop: 34 }}>
           <p className={styles.lead}>
-            I build trading infrastructure at{' '}
+            Currently interning at{' '}
             <a href="https://ellipsislabs.xyz" target="_blank" rel="noreferrer">
               Ellipsis Labs
             </a>
-            , the team behind Phoenix, Solana&apos;s fastest on-chain order book.
+            .
           </p>
 
           <p>
