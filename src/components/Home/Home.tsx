@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import styles from './Home.module.css';
 
-const WORDS = ['fintech.', 'DeFi rails.', 'trading systems.', 'things people use.'];
+const WORDS = ['building', 'creating', 'travelling', 'learning'];
 
 function useTypewriter(words: string[], enabled: boolean) {
   const [i, setI] = useState(0);
@@ -48,9 +48,9 @@ export default function Home() {
           Hi, I&apos;m <em>Mugdha</em>
         </h1>
         <p className={styles.tagline}>
-          I love building{' '}
+          I love{' '}
           {reduce ? (
-            <span className={styles.rotating}>fintech.</span>
+            <span className={styles.rotating}>building</span>
           ) : (
             <>
               <span className={styles.rotating}>{typed}</span>
