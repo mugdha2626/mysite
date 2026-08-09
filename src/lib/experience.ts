@@ -18,7 +18,7 @@ export const ROLES: Role[] = [
     id: 'ellipsis',
     company: 'Ellipsis Labs',
     role: 'Software Engineering Intern',
-    range: 'May 2026 - Present',
+    range: 'Summer 2026',
     year: '2026',
     location: 'New York, NY',
     url: 'https://www.ellipsislabs.xyz/',
