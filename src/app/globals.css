@@ -26,7 +26,6 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--nav-height) + 24px);
   -webkit-text-size-adjust: 100%; /* no iOS landscape text resizing */
-  color-scheme: light;
 }
 
 @media (prefers-reduced-motion: reduce) {

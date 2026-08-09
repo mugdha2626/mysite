@@ -1,7 +1,11 @@
 import type { Metadata } from 'next';
 import { sans } from './fonts';
 import Dock from '@/components/Dock/Dock';
+import ThemeToggle from '@/components/ThemeToggle/ThemeToggle';
 import './globals.css';
+
+// Runs before paint so there's no flash of the wrong theme.
+const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mugdhapatil.com'),
@@ -23,9 +27,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={sans.variable}>
+    <html lang="en" className={sans.variable} suppressHydrationWarning>
       <body>
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
         {children}
+        <ThemeToggle />
         <Dock />
       </body>
     </html>

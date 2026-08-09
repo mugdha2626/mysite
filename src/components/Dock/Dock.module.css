@@ -12,7 +12,7 @@
   background: color-mix(in srgb, var(--cream-light) 78%, transparent);
   backdrop-filter: saturate(160%) blur(14px);
   -webkit-backdrop-filter: saturate(160%) blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--surface-raised);
   box-shadow: 0 16px 40px -14px var(--shadow-warm), 0 2px 6px -2px var(--shadow-warm);
 }
 

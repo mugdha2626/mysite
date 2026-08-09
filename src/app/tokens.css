@@ -79,4 +79,44 @@
 
   --nav-height: 72px;
   --max-width: 1100px;
+
+  color-scheme: light;
+}
+
+/*
+ * Dark theme - a warm espresso, never pure black. Same palette, dimmed and
+ * with brighter green/rose so accents keep their contrast. Applied by the
+ * inline script in layout.tsx via data-theme on <html>.
+ */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --cream: #1c1712;
+  --cream-light: #221d16;
+  --cream-dark: #141009;
+
+  --bg: #15110d;
+  --bg-soft: #1b1610;
+  --surface: #241e17;
+  --surface-raised: #322a20;
+  --shadow-warm: rgba(0, 0, 0, 0.45);
+
+  --ink-faint: #756d61;
+  --ink-soft: #a49b8d;
+  --ink: #cfc7ba;
+  --ink-strong: #efe9df;
+  --ink-max: #faf6ef;
+
+  --green: #7fc0a0;
+  --green-light: #97d3b3;
+  --green-tint: rgba(127, 192, 160, 0.15);
+  --rose: #d3aeb0;
+  --rose-light: #e0c0c1;
+  --rose-icon: #d6a3a9;
+  --rose-tint: rgba(211, 174, 176, 0.16);
+
+  --card-green: #23342b;
+  --card-rose: #33272a;
+  --card-cream: #241f18;
+  --card-sage: #26322a;
 }
