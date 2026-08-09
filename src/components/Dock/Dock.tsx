@@ -1,6 +1,6 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { useEffect, useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { PROFILE } from '@/lib/profile';
@@ -57,6 +57,20 @@ const I = {
       <path d="m4 7 8 5 8-5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   ),
+  moon: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" strokeLinejoin="round" />
+    </svg>
+  ),
+  sun: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+      <circle cx="12" cy="12" r="4" />
+      <path
+        d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"
+        strokeLinecap="round"
+      />
+    </svg>
+  ),
 };
 
 type Item = { id: string; label: string; icon: ReactNode; href: string; external?: boolean };
@@ -76,6 +90,23 @@ const SOCIAL: Item[] = [
 
 export default function Dock() {
   const pathname = usePathname();
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    setTheme((document.documentElement.dataset.theme as 'light' | 'dark') || 'light');
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+    setTheme(next);
+  };
+  const isDark = mounted && theme === 'dark';
 
   const renderItem = (item: Item, rose = false) => {
     const active = !item.external && (item.href === '/' ? pathname === '/' : pathname.startsWith(item.href));
@@ -122,6 +153,17 @@ export default function Dock() {
           {renderItem(item, true)}
         </span>
       ))}
+      <span className={styles.slot}>
+        <button
+          type="button"
+          className={styles.item}
+          style={{ color: 'var(--rose-icon)' }}
+          onClick={toggleTheme}
+          aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}>
+          <span className={styles.tip}>{isDark ? 'Light mode' : 'Dark mode'}</span>
+          <span className={styles.icon}>{isDark ? I.sun : I.moon}</span>
+        </button>
+      </span>
     </nav>
   );
 }
